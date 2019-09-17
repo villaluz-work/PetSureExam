@@ -131,7 +131,7 @@ namespace Customer.API.Controllers
             {
                 _custRepo.Delete(customer);
                 _custRepo.Save();
-                return Request.CreateResponse(HttpStatusCode.OK, customer);
+                return Request.CreateResponse(HttpStatusCode.OK, id);
             }
             catch (Exception ex)
             {
