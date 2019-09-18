@@ -11,3 +11,17 @@ C:\Users\rvillaluz\source\repos\PetsureGlobalAPITest\Customers.Data\obj\Debug\Cu
 C:\Users\rvillaluz\source\repos\PetsureGlobalAPITest\Customers.Data\obj\Debug\Customers.Data.csproj.CopyComplete
 C:\Users\rvillaluz\source\repos\PetsureGlobalAPITest\Customers.Data\obj\Debug\Customers.Data.dll
 C:\Users\rvillaluz\source\repos\PetsureGlobalAPITest\Customers.Data\obj\Debug\Customers.Data.pdb
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\bin\Debug\Customers.Data.dll.config
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\bin\Debug\Customers.Data.dll
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\bin\Debug\Customers.Data.pdb
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\bin\Debug\EntityFramework.dll
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\bin\Debug\EntityFramework.xml
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\obj\Debug\Customers.Data.csprojAssemblyReference.cache
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\obj\Debug\Customers.Data.Migrations.initial.resources
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\obj\Debug\Customers.Data.csproj.GenerateResource.cache
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\obj\Debug\Customers.Data.csproj.CoreCompileInputs.cache
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\obj\Debug\Customers.Data.csproj.CopyComplete
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\obj\Debug\Customers.Data.dll
+C:\Users\rvillaluz\Documents\Reymond\PetSureExam\Customers.Data\obj\Debug\Customers.Data.pdb

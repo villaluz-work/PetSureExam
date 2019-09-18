@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Customer.API
 {
@@ -11,6 +12,8 @@ namespace Customer.API
         {
             // Web API configuration and services
             config.Filters.Add(new CustomerAuthorization());
+            var corsAttr = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(corsAttr);
             // Web API routes
             config.MapHttpAttributeRoutes();
 
