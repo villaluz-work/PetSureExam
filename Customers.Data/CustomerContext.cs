@@ -7,6 +7,10 @@ namespace Customers.Data
 {
     public class CustomerContext : DbContext
     {
+        public CustomerContext()
+        {
+
+        }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Address> Address { get; set; }
 

@@ -1,21 +1,44 @@
 <h1>Customer Page</h1>
-
-<button mat-stroked-button color='primary' (click)='getAllCustomers()'>Get All Customers</button>
-<button mat-stroked-button color='primary' (click)='save()'>Add</button>
-
-<div *ngIf='customers != null' style='display:flex; flex-grow: 1; flex-direction: row;'>
-    <mat-list style='display:flex; flex-grow: 1; flex-direction: column;'>
-        <mat-list-item *ngFor='let c of customers' style='margin-top:80px;'> 
-            <div style='display:flex; flex-direction: column;flex-grow: 1;'>
-                <label>Name : {{c.fullName}}</label>
-                <label>Date Of Birth : {{c.dob | date }} </label>
-                <label>Age : {{c.age}}</label>
-                <div style='display:flex;margin-top:5px;'>
-                    <button mat-stroked-button color='primary' (click)='update()'>Update</button>
-                    <button mat-stroked-button color='warn' (click)='delete(c.id)'>Delete</button>
-                </div>
-            </div>
-        </mat-list-item>
-    </mat-list>
+<div class='action' style='display: flex;'>
+    <button mat-stroked-button color='primary' (click)='addCustomer()'>Add</button>
 </div>
+<div style='display:flex;flex-direction: column;'>
+        <div *ngIf='!isUserAdding' style='display:flex; flex-grow: 1; flex-direction: row;'>
+            <mat-list style='display:flex; flex-grow: 1; flex-direction: column;'>
+                <mat-list-item *ngFor='let c of customers' style='margin-top:80px;'> 
+                    <div style='display:flex; flex-direction: column;flex-grow: 1;'>
+                        <label>Name : {{c.fullName}}</label>
+                        <label>Date Of Birth : {{c.dob | date }} </label>
+                        <label>Age : {{c.age}}</label>
+                        <div style='display:flex;margin-top:5px;'>
+                            <button mat-stroked-button color='primary' (click)='update()'>Update</button>
+                            <button mat-stroked-button color='warn' (click)='delete(c.id)'>Delete</button>
+                        </div>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+            
+        <div *ngIf="isUserAdding">
+            <h1>Add Customer</h1> 
+            <form [formGroup]='fg' style='display: flex;flex-direction: column; width:30%;'>
+                <mat-form-field>
+                    <input type='text' matInput formControlName='fullName' placeholder="Full Name"/>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" formControlName='dob' placeholder="Date of Birth"/>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type='number' matInput formControlName='age' placeholder="Age"/>
+                </mat-form-field>
+            </form>
+            <button mat-stroked-button color='primary' (click)='save()'>Save</button>
+            <button mat-stroked-button color='primary' (click)='cancel()'>Cancel</button>
+        </div>
+</div>
+
+
+
 

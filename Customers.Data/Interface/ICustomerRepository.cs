@@ -5,5 +5,6 @@ namespace Customers.Data.Repositories
 {
     public interface ICustomerRepository : IGenericRepository<Customer> 
     {
+        int AddCustomer(Customer entity);
     }
 }

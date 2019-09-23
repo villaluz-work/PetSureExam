@@ -9,11 +9,11 @@ namespace Customers.Data.Repositories
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private DbSet<T> dbSet;
-        private CustomerContext ctx = new CustomerContext();
-
-        public GenericRepository()
+        private readonly CustomerContext _ctx;
+        public GenericRepository(CustomerContext ctx)
         {
-            dbSet = ctx.Set<T>();
+            _ctx = ctx;
+            dbSet = _ctx.Set<T>();
         }
         public virtual void Add(T entity)
         {
@@ -37,12 +37,12 @@ namespace Customers.Data.Repositories
 
         public void Update(T entity)
         {
-            ctx.Entry(entity).State = EntityState.Modified;
+            _ctx.Entry(entity).State = EntityState.Modified;
         }
 
         public int Save()
         {
-            return ctx.SaveChanges();
+            return _ctx.SaveChanges();
         }
 
         public IQueryable<T> GetAll()

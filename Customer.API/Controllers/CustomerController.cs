@@ -1,14 +1,12 @@
 ﻿using Customers.Data.Repositories;
-using Customers.Data.Model;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System;
 using System.Net.Http;
-using Newtonsoft.Json;
 using System.Net;
 using Customer.API.Authentication;
 using Customer.API.Utils;
+using Customers.Data;
 
 namespace Customer.API.Controllers
 {
@@ -63,6 +61,7 @@ namespace Customer.API.Controllers
             }
             try
             {
+                //_custRepo.AddCustomer(customer);
                 _custRepo.Add(customer);
                 _custRepo.Save();
                 return Request.CreateResponse(HttpStatusCode.OK, customer);
