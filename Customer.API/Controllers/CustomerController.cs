@@ -32,7 +32,8 @@ namespace Customer.API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, new InvalidOperationException(ex.Message, ex));
             }
         }
-
+       [HttpGet]
+       [Route("api/customer/getbyid/{id}")]
         public HttpResponseMessage Get(int id)
         {
             if (id <= 0)
@@ -61,7 +62,6 @@ namespace Customer.API.Controllers
             }
             try
             {
-                //_custRepo.AddCustomer(customer);
                 _custRepo.Add(customer);
                 _custRepo.Save();
                 return Request.CreateResponse(HttpStatusCode.OK, customer);
