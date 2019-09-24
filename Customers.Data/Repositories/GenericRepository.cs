@@ -39,15 +39,16 @@ namespace Customers.Data.Repositories
         {
             _ctx.Entry(entity).State = EntityState.Modified;
         }
+        public IQueryable<T> GetAll()
+        {
+            return dbSet;
+        }
 
         public int Save()
         {
             return _ctx.SaveChanges();
         }
 
-        public IQueryable<T> GetAll()
-        {
-            return dbSet;
-        }
+        
     }
 }

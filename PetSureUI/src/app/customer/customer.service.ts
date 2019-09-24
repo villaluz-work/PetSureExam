@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment'; 
 
 @Injectable()
 export class CustomerService{
-    private apiUrl: string = 'https://localhost:44392/api/customer/';
+    private apiUrl: string = environment.apiUrl;
     private reqHeaders: HttpHeaders;
 
     constructor(private http: HttpClient) {

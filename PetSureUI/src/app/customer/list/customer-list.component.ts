@@ -10,7 +10,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 export class CustomerListComponent implements OnInit {
     customers: ICustomer[];
-    isUserAdding: boolean = false;
+    updateCustomerId: number;
+    userActivity: number = 0;
     fg: FormGroup
     constructor(private customerService: CustomerService, private fb: FormBuilder) {
         this.fg = new FormGroup({
@@ -44,10 +45,10 @@ export class CustomerListComponent implements OnInit {
     }
 
     addCustomer() {
-        this.isUserAdding = true;
+        this.userActivity = 1;
     }
 
-    save() {
+    save(customerParam: ICustomer = null) {
         let customer : ICustomer  = {
             id: null,
             fullName : this.fg.controls['fullName'].value,
@@ -55,25 +56,33 @@ export class CustomerListComponent implements OnInit {
             age: this.fg.controls['age'].value
         };
         if (this.fg.valid) {
-            this.customerService.addCustomer(customer).subscribe(data => {
-                this.isUserAdding = false;
-                this.getAllCustomers();
-            }, (err) => { alert(err); });    
+            switch(this.userActivity) {
+                case 1:
+                    this.customerService.addCustomer(this.fg.value).subscribe(data => {
+                        this.userActivity = 0;
+                        this.getAllCustomers();
+                    }, (err) => { alert(err); });  
+                    break;
+                case 2:
+                    this.customerService.updateCustomer(this.updateCustomerId, this.fg.value).subscribe(data => {
+                        this.userActivity = 0;
+                        this.getAllCustomers();
+                    }, (err) => { alert(err); })
+                    break;
+                default:
+                    alert('Undefined user activity');
+            }
         }else {
-            alert('Form not valid!');
+            alert('Form invalid!');
         }
     }
 
-    update() {
-        let customer: ICustomer = {
-            id: 10, 
-            fullName: 'Iron Man 2',
-            dob: '2012-01-01',
-            age: 7
-        }
-        this.customerService.updateCustomer(customer.id, customer).subscribe(data => {
-            alert('Updated!');
-        }, (err) => { alert(err); })
+    update(customer: ICustomer) {
+        this.userActivity = 2;
+        this.updateCustomerId = customer.id;
+        this.fg.controls['fullName'].setValue(customer.fullName);
+        this.fg.controls['dob'].setValue(customer.dob);
+        this.fg.controls['age'].setValue(customer.age);
     }
 
     delete(id: number) {
@@ -84,7 +93,7 @@ export class CustomerListComponent implements OnInit {
     }
 
     cancel() {
-        this.isUserAdding = false;
+        this.userActivity = 0;
         this.getAllCustomers();
     }
 }

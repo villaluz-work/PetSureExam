@@ -3,7 +3,7 @@
     <button mat-stroked-button color='primary' (click)='addCustomer()'>Add</button>
 </div>
 <div style='display:flex;flex-direction: column;'>
-        <div *ngIf='!isUserAdding' style='display:flex; flex-grow: 1; flex-direction: row;'>
+        <div *ngIf='userActivity == 0' style='display:flex; flex-grow: 1; flex-direction: row;'>
             <mat-list style='display:flex; flex-grow: 1; flex-direction: column;'>
                 <mat-list-item *ngFor='let c of customers' style='margin-top:80px;'> 
                     <div style='display:flex; flex-direction: column;flex-grow: 1;'>
@@ -11,7 +11,7 @@
                         <label>Date Of Birth : {{c.dob | date }} </label>
                         <label>Age : {{c.age}}</label>
                         <div style='display:flex;margin-top:5px;'>
-                            <button mat-stroked-button color='primary' (click)='update()'>Update</button>
+                            <button mat-stroked-button color='primary' (click)='update(c)'>Update</button>
                             <button mat-stroked-button color='warn' (click)='delete(c.id)'>Delete</button>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
             </mat-list>
         </div>
             
-        <div *ngIf="isUserAdding">
+        <div *ngIf="userActivity > 0">
             <h1>Add Customer</h1> 
             <form [formGroup]='fg' style='display: flex;flex-direction: column; width:30%;'>
                 <mat-form-field>
