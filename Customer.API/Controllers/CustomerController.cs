@@ -36,21 +36,22 @@ namespace Customer.API.Controllers
        [Route("api/customer/getbyid/{id}")]
         public HttpResponseMessage Get(int id)
         {
-            if (id <= 0)
-            {
-                Logger.Log(LogType.Argument, string.Concat("Invalid Argument ", nameof(id)));
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new ArgumentException(nameof(id)));
-            }
-            try
-            {
-                var customer = _custRepo.GetById(id);
-                return Request.CreateResponse(HttpStatusCode.OK, customer);
-            }
-            catch (Exception ex)
-            {
-                Logger.Log(LogType.InvalidOperation, ex.Message, ex.StackTrace);
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, new InvalidOperationException(ex.Message, ex));
-            }
+            throw new NotImplementedException();
+            //if (id <= 0)
+            //{
+            //    Logger.Log(LogType.Argument, string.Concat("Invalid Argument ", nameof(id)));
+            //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new ArgumentException(nameof(id)));
+            //}
+            //try
+            //{
+            //    var customer = _custRepo.GetById(id);
+            //    return Request.CreateResponse(HttpStatusCode.OK, customer);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Logger.Log(LogType.InvalidOperation, ex.Message, ex.StackTrace);
+            //    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, new InvalidOperationException(ex.Message, ex));
+            //}
         }
 
         public HttpResponseMessage Post([FromBody] Customers.Data.Model.Customer customer)

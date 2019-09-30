@@ -1,8 +1,10 @@
 ﻿using Customer.API.Authentication;
+using Customer.API.Custom_Handler;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.ExceptionHandling;
 
 namespace Customer.API
 {
@@ -12,8 +14,18 @@ namespace Customer.API
         {
             // Web API configuration and services
             config.Filters.Add(new CustomerAuthorization());
+            
+            // Enable CORS
             var corsAttr = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(corsAttr);
+
+            // Exception Handler
+            config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHanlder());
+
+            // Request Reponse Handler
+            config.MessageHandlers.Add(new RequestResponseHandler());
+
+            
             // Web API routes
             config.MapHttpAttributeRoutes();
 
